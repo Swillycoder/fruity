@@ -6,7 +6,7 @@ canvas.height = 600;
 
 const images = {
     machine: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/fruity.png',
-    cherries: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/http://localhost:8000/images/cherries50px.png',
+    cherries: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/cherries50px.png',
     apples: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/apple50px.png',
     bananas: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/banana50px.png',
     watermelon: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/watermelon50px.png',
