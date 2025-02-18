@@ -14,7 +14,7 @@ const images = {
     blue7: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/7blue.png',
     red7: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/7red.png',
     yellow7: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/7yellow.png',
-    bar_bg: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/bar3.png',
+    bar_bg: 'https://raw.githubusercontent.com/Swillycoder/fruity/main/bar4.png',
 };
 
 const loadImage = (src) => {
