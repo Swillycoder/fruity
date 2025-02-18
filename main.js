@@ -57,14 +57,12 @@ class Reels {
         this.currentColor1 = this.getRandomColor(this.colorReel1);
         this.currentColor2 = this.getRandomColor(this.colorReel2);
         this.currentColor3 = this.getRandomColor(this.colorReel3);
-
-         // Holds state for each reel
+        
     }
 
     getRandomColor(colorArray) {
         return colorArray[Math.floor(Math.random() * colorArray.length)];
     }
-
 
     spin() {
         if (plays >= 1)
@@ -83,7 +81,7 @@ class Reels {
     }
 
     toggleHold(index) {
-        if (this.canHold) { // Only allow hold if the probability allows it
+        if (this.canHold) { 
             this.held[index] = !this.held[index];
         }
     }
@@ -96,7 +94,7 @@ class Reels {
             this.pot += winningAmount;
 
             this.winMessage = "WIN!";
-            // Clear message after 2 seconds
+
             if (this.winMessageTimeout) clearTimeout(this.winMessageTimeout);
             this.winMessageTimeout = setTimeout(() => this.winMessage = null, 2000);
         }
@@ -105,7 +103,7 @@ class Reels {
     draw() {
         // Draw Reel 1
         ctx.drawImage(this.currentColor1, this.xR1, this.y)
-        // Draw HOLD message if held
+        
         if (this.held[0]) {
             ctx.textAlign = 'left'
             ctx.fillStyle = 'red';
@@ -168,8 +166,8 @@ class Reels {
             this.currentColor2 === this.currentColor3 && 
             this.currentColor1 === this.currentColor3) {
             let winningAmount = this.colorReel1.indexOf(this.currentColor1) + 1;
-            ctx.strokeStyle = 'blue';  // Set the stroke color to blue
-            ctx.lineWidth = 3;         // Set the stroke width to 3px
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 3;
             ctx.strokeRect(410, 505 - 23.5 * winningAmount, 74, 22);  
         }
 
@@ -220,7 +218,7 @@ function drawRoundedRect(ctx, x, y, width, height, radius) {
 
 const holdButton1 = {x: 133, y: 520, width: 40, height: 24, radius: 7, visible: false, 
     draw() {
-        if (this.visible) { // Only draw if visible is true
+        if (this.visible) {
             ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
             drawRoundedRect(ctx, this.x, this.y, this.width, this.height, this.radius);
         }
@@ -228,7 +226,7 @@ const holdButton1 = {x: 133, y: 520, width: 40, height: 24, radius: 7, visible: 
 };
 const holdButton2 = {x: 210, y: 520, width: 40, height: 24, radius: 7, visible: false, 
     draw() {
-        if (this.visible) { // Only draw if visible is true
+        if (this.visible) {
             ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
             drawRoundedRect(ctx, this.x, this.y, this.width, this.height, this.radius);
         }
@@ -236,7 +234,7 @@ const holdButton2 = {x: 210, y: 520, width: 40, height: 24, radius: 7, visible: 
 };
 const holdButton3 = {x: 282, y: 520, width: 40, height: 24, radius: 7, visible: false, 
     draw() {
-        if (this.visible) { // Only draw if visible is true
+        if (this.visible) {
             ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
             drawRoundedRect(ctx, this.x, this.y, this.width, this.height, this.radius);
         }
@@ -245,7 +243,7 @@ const holdButton3 = {x: 282, y: 520, width: 40, height: 24, radius: 7, visible: 
 
 const collectButton = {x: 50, y: 520, width: 40, height: 24, radius: 7, visible: false, 
     draw() {
-        if (this.visible) { // Only draw if visible is true
+        if (this.visible) {
             ctx.fillStyle = 'rgba(254, 254, 47, 0.5)';
             drawRoundedRect(ctx, this.x, this.y, this.width, this.height, this.radius);
         }
@@ -254,7 +252,7 @@ const collectButton = {x: 50, y: 520, width: 40, height: 24, radius: 7, visible:
 
 const insertButton = {x: 415, y: 25, width: 87, height: 19, radius: 7, visible: false, 
     draw() {
-        if (this.visible) { // Only draw if visible is true
+        if (this.visible) {
             ctx.fillStyle = 'rgba(254, 254, 47, 0.5)';
             drawRoundedRect(ctx, this.x, this.y, this.width, this.height, this.radius);
         }
@@ -263,7 +261,7 @@ const insertButton = {x: 415, y: 25, width: 87, height: 19, radius: 7, visible: 
 
 const playButton = {x: 445, y: 520, width: 40, height: 24, radius: 7, visible: true, 
     draw() {
-        if (this.visible) { // Only draw if visible is true
+        if (this.visible) {
             ctx.fillStyle = 'rgba(0, 243, 8, 0.5)';
             drawRoundedRect(ctx, this.x, this.y, this.width, this.height, this.radius);
         }
@@ -313,10 +311,12 @@ function machineScreen() {
     console.log("All images loaded!");
 
     fruityReels = new Reels(121, 207, 291, 350)
-    // Start the game loop after images are loaded
+
     gameLoop();
 })();
 
+
+//Event Listeners
 document.addEventListener('keydown', (e) => {
     if (keys.hasOwnProperty(e.code)) {
         keys[e.code] = true;
@@ -328,7 +328,7 @@ document.addEventListener('keydown', (e) => {
                 plays -= 1
                 fruityReels.spin();
                 machineScreen();
-            } else return// Redraw with new colors
+            } else return
 
         }
         if (e.code === 'KeyW') {
@@ -399,12 +399,10 @@ canvas.addEventListener('click', (event) => {
                     plays -= 1
                     fruityReels.spin();
                     machineScreen();
-                } else return// Redraw with new colors
+                } else return
                 
             }
         }
-    
-     
 
     if (fruityReels.canHold) {
         if (mouseX >= holdButton1.x && mouseX <= holdButton1.x + holdButton1.width &&
